@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaTiktok, FaStore, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaTiktok, FaStore, FaGithub, FaExternalLinkAlt, FaLink } from "react-icons/fa";
 
 // Komponen Custom untuk Animasi Angka (Tanpa Library Eksternal!)
 const AnimatedNumber = ({ end }) => {
@@ -30,7 +30,6 @@ const AnimatedNumber = ({ end }) => {
 };
 
 const Portfolio = () => {
-  // PERUBAHAN: Menambahkan properti "image" ke masing-masing proyek
   const projects = [
     {
       id: 1,
@@ -38,44 +37,44 @@ const Portfolio = () => {
       desc: "Mengembangkan sistem informasi berbasis web untuk PT Prima Komponen Indonesia yang bertujuan meningkatkan proses pelaporan dan pemantauan defect unit dan menggantikan proses manual dengan dashboard terintegrasi.",
       tech: ["Laravel", "Bootstrap", "JS", "MySQL"],
       image: "./projects-picture/logo-projects1.png",
-      demo: "#",
-      code: "#",
+      github: "https://github.com/yahyamuhaimin7766/mobil-monitoring-system",
+      lynkId: null,
     },
     {
       id: 2,
       title: "SITATIB - Sistem Tata Tertib Sekolah Digital",
       desc: "Mengembangkan SITATIB, sebuah sistem informasi tata tertib sekolah berbasis web yang memungkinkan pengelolaan data pelanggaran, siswa, razia dan laporan secara terintegrasi.",
       tech: ["Laravel", "Bootstrap", "JS", "MySQL"],
-      image: "./projects-picture/logo-projects2.png", // Path ke screenshot aplikasi Anda
-      demo: "#",
-      code: "#",
+      image: "./projects-picture/logo-projects2.png",
+      github: "https://github.com/yahyamuhaimin7766/tatib-id",
+      lynkId: null,
     },
     {
       id: 3,
       title: "E-Book Panduan Membuat Animasi AI Professional Dengan Tools Gratis",
       desc: "Menulis & menyusun e-book Panduan Lengkap Membuat Video Animasi dengan AI yang membahas penggunaan tools AI gratis untuk menghasilkan video animasi profesional.",
       tech: ["Canva", "E-Book", "Animation"],
-      image: "./projects-picture/projects3.png", // Path ke screenshot aplikasi Anda
-      demo: "#",
-      code: "#",
+      image: "./projects-picture/projects3.png",
+      github: null,
+      lynkId: "https://lynk.id/tipsntech/z9qrmy151gz5",
     },
     {
       id: 4,
       title: "Personal Portfolio Website",
       desc: "Mengembangkan Web Portofolio Pribadi, Website ini menampilkan berbagai proyek, keterampilan, pengalaman kerja, dan pencapaian saya melalui tampilan yang modern dan responsif.",
       tech: ["ReactJS", "TaildWind CSS", "Framer Motion"],
-      image: "./projects-picture/projects4.png", // Path ke screenshot aplikasi Anda
-      demo: "#",
-      code: "#",
+      image: "./projects-picture/projects4.png",
+      github: "https://github.com/yahyamuhaimin7766/web-portfolio-reactjs",
+      lynkId: null,
     },
     {
       id: 5,
       title: "Catatan Kegiatan Harian (Daily Activity Report)",
       desc: "Sistem berbasis web yang dikembangkan untuk mempermudah pencatatan, pemantauan, dan pelaporan kegiatan harian dengan fitur unggah dokumentasi, filter data, serta ekspor laporan.",
       tech: ["PHP", "MySQL"],
-      image: "./projects-picture/projects5.png", // Path ke screenshot aplikasi Anda
-      demo: "#",
-      code: "#",
+      image: "./projects-picture/projects5.png",
+      github: "https://github.com/yahyamuhaimin7766/laporan-catatan-kegian-harian",
+      lynkId: null,
     },
   ];
 
@@ -92,9 +91,8 @@ const Portfolio = () => {
         {/* SECTION 1: CREATOR HIGHLIGHTS */}
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           {/* TikTok Card - Glow Effect Hover */}
-          {/* TikTok Card - Glow Effect Hover (Sekarang bisa diklik seluruh kartunya) */}
           <motion.a
-            href="https://www.tiktok.com/@tipsntrick.tech?_r=1&_t=ZS-97lqxx1En0z" 
+            href="https://www.tiktok.com/@tipsntrick.tech?_r=1&_t=ZS-97lqxx1En0z"
             target="_blank"
             rel="noreferrer"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -120,6 +118,7 @@ const Portfolio = () => {
               <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">Mengedukasi audiens lewat Tutorial Teknologi, Web Development, AI Tools, Excel & Word tips</p>
             </div>
           </motion.a>
+
           {/* Lynk.id Card - Glow Effect Hover */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -148,8 +147,7 @@ const Portfolio = () => {
 
         {/* SECTION 2: WEB PROJECTS */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* PERUBAHAN: Mengambil parameter "image" dari array projects */}
-          {projects.map(({ id, title, desc, tech, image, demo, code }, index) => (
+          {projects.map(({ id, title, desc, tech, image, github, lynkId }, index) => (
             <motion.div
               key={id}
               initial={{ opacity: 0, y: 30 }}
@@ -158,7 +156,6 @@ const Portfolio = () => {
               viewport={{ once: true }}
               className="group flex flex-col bg-white dark:bg-darkCard border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
-              {/* PERUBAHAN: Menghapus FiMonitor dan menggantinya dengan tag img */}
               <div className="h-48 bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 relative overflow-hidden">
                 <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
@@ -175,23 +172,27 @@ const Portfolio = () => {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-zinc-100 dark:border-zinc-800/50">
-                  <a
-                    href={demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 text-center py-2 text-sm font-semibold bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-lg hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
-                  >
-                    Live Demo
-                  </a>
-                  <a
-                    href={code}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 transition-colors"
-                  >
-                    <FaGithub size={20} />
-                  </a>
+                {/* BAGIAN TOMBOL DINAMIS */}
+                <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800/50 mt-auto">
+                  {lynkId ? (
+                    <a
+                      href={lynkId}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-300 shadow-sm"
+                    >
+                      <FaLink size={18} /> Lihat Produk
+                    </a>
+                  ) : (
+                    <a
+                      href={github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors duration-300 shadow-sm"
+                    >
+                      <FaGithub size={18} /> Source Code
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

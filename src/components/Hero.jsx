@@ -3,16 +3,17 @@ import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
   return (
-    <div name="home" className="h-screen w-full flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
+    // PERUBAHAN DI SINI: h-screen diganti min-h-screen, lalu ditambahkan pt-32 dan pb-10
+    <div name="home" className="min-h-screen w-full flex flex-col justify-center items-center text-center px-4 pt-32 pb-10 relative overflow-hidden">
       {/* Efek Cahaya Latar Belakang (Ambient Glow) */}
       <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-zinc-300/30 dark:bg-zinc-600/20 rounded-full mix-blend-multiply filter blur-[100px] animate-pulse pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-zinc-400/20 dark:bg-zinc-700/20 rounded-full mix-blend-multiply filter blur-[120px] animate-pulse pointer-events-none" style={{ animationDelay: "1s" }}></div>
 
-      <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-screen-md mx-auto flex flex-col items-center justify-center h-full z-10 pt-10">
+      <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-screen-md mx-auto flex flex-col items-center justify-center h-full z-10">
         {/* Foto Profil dengan Efek Glow */}
         <div className="mb-6 relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-zinc-300 to-zinc-500 dark:from-zinc-600 dark:to-zinc-400 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-          <img src="./profilku.jpg" /* Pastikan nama file sesuai */ alt="Profil Yahya" className="relative w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover border-4 border-white dark:border-zinc-800 shadow-xl" />
+          <img src="./profilku.jpg" alt="Profil Yahya" className="relative w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover border-4 border-white dark:border-zinc-800 shadow-xl" />
         </div>
 
         {/* Teks Nama Hologram */}
@@ -22,7 +23,7 @@ const Hero = () => {
         </h2>
 
         {/* Efek Animasi Ketik (Typewriter) */}
-        <div className="text-xl sm:text-3xl font-bold text-zinc-600 dark:text-zinc-300 h-12 sm:h-16">
+        <div className="text-xl sm:text-3xl font-bold text-zinc-600 dark:text-zinc-300 h-12 sm:h-16 flex items-center justify-center">
           <TypeAnimation sequence={["Digital Creator", 1500, "Tech Enthusiast", 1500]} wrapper="span" speed={50} repeat={Infinity} className="inline-block" />
         </div>
 

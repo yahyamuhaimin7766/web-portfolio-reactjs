@@ -21,7 +21,7 @@ const Education = () => {
   ];
 
   return (
-    <div name="education" className="w-full min-h-screen pt-20">
+    <div name="education" className="w-full min-h-screen pt-35">
       <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
         <div className="pb-10 text-center">
           <h2 className="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white inline-block">Pendidikan</h2>

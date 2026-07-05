@@ -40,3 +40,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1aa; /* zinc-400 */
 }
+
+html {
+  zoom: 80%; /* Memaksa browser me-render seluruh website di skala 80% */
+}
