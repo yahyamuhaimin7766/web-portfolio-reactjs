@@ -41,6 +41,8 @@ body {
   background: #a1a1aa; /* zinc-400 */
 }
 
-html {
-  zoom: 80%; /* Memaksa browser me-render seluruh website di skala 80% */
+@media (min-width: 1024px) {
+  html {
+    zoom: 80%;
+  }
 }

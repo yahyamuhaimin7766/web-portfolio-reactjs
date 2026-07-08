@@ -1,72 +1,114 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
-import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { FiHome, FiUser, FiBriefcase, FiBook, FiLayout, FiMail, FiMoon, FiSun } from "react-icons/fi"; // Menggunakan Feather Icons karena desainnya tipis & elegan standar Apple/Android
 
 const Navbar = () => {
-  const [nav, setNav] = useState(false);
-  const [theme, setTheme] = useState("light");
+  const [darkMode, setDarkMode] = useState(false);
+  const [showNav, setShowNav] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Logic untuk Dark Mode
+  // Logika Smart Navbar (Hanya untuk Header Atas)
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 50) {
+        setShowNav(false);
+      } else {
+        setShowNav(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
 
-  const handleThemeSwitch = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle("dark");
   };
 
+  // Array Links sekarang dilengkapi dengan Ikon
   const links = [
-    { id: 1, link: "home" },
-    { id: 2, link: "about" },
-    { id: 3, link: "experience" },
-    { id: 4, link: "education" },
-    { id: 5, link: "portfolio" },
-    { id: 6, link: "contact" },
+    { id: 1, name: "Home", link: "home", icon: <FiHome size={22} /> },
+    { id: 2, name: "About", link: "about", icon: <FiUser size={22} /> },
+    { id: 3, name: "Experience", link: "experience", icon: <FiBriefcase size={22} /> },
+    { id: 4, name: "Education", link: "education", icon: <FiBook size={22} /> },
+    { id: 5, name: "Portfolio", link: "portfolio", icon: <FiLayout size={22} /> },
+    { id: 6, name: "Contact", link: "contact", icon: <FiMail size={22} /> },
   ];
 
   return (
-    <nav className="fixed w-full h-20 px-4 flex justify-between items-center bg-white/80 dark:bg-darkBg/80 backdrop-blur-md z-50 shadow-sm">
-      <div>
-        <h1 className="text-2xl font-bold font-signature ml-2 text-accent">Portofolio</h1>
-      </div>
+    <>
+      {/* ========================================================= */}
+      {/* HEADER ATAS (Desktop Navigation & Mobile Logo/Dark Mode)  */}
+      {/* ========================================================= */}
+      <motion.nav
+        initial={{ y: 0 }}
+        animate={{ y: showNav ? 0 : "-100%" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="flex justify-between items-center w-full h-20 px-4 md:px-8 text-zinc-900 dark:text-white bg-white/80 dark:bg-darkBg/80 backdrop-blur-md fixed top-0 z-50 border-b border-zinc-200 dark:border-zinc-800 shadow-sm"
+      >
+        {/* Logo */}
+        <div>
+          <h1 className="text-2xl font-black font-signature tracking-tighter">Portofolio</h1>
+        </div>
 
-      <ul className="hidden md:flex items-center">
-        {links.map(({ id, link }) => (
-          <li key={id} className="px-4 cursor-pointer capitalize font-medium hover:text-accent duration-200">
-            <Link to={link} smooth duration={500}>
-              {link}
-            </Link>
-          </li>
-        ))}
-        <button onClick={handleThemeSwitch} className="p-2 ml-4 rounded-full bg-slate-200 dark:bg-slate-700 hover:scale-105 duration-200">
-          {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
-        </button>
-      </ul>
-
-      {/* Mobile Menu */}
-      <div onClick={() => setNav(!nav)} className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden">
-        {nav ? <FiX size={30} /> : <FiMenu size={30} />}
-      </div>
-
-      {nav && (
-        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-slate-100 dark:bg-darkBg">
-          {links.map(({ id, link }) => (
-            <li key={id} className="px-4 cursor-pointer capitalize py-6 text-4xl hover:text-accent duration-200">
-              <Link onClick={() => setNav(!nav)} to={link} smooth duration={500}>
-                {link}
+        {/* --- DESKTOP MENU --- */}
+        <ul className="hidden md:flex items-center">
+          {links.map(({ id, name, link }) => (
+            <li key={id} className="px-4">
+              <Link
+                to={link}
+                smooth
+                duration={500}
+                spy={true}
+                activeClass="!text-zinc-900 dark:!text-white font-bold"
+                className="cursor-pointer capitalize font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
+              >
+                {name}
               </Link>
             </li>
           ))}
-          <button onClick={handleThemeSwitch} className="mt-8 p-4 rounded-full bg-slate-200 dark:bg-slate-700">
-            {theme === "dark" ? <FiSun size={30} /> : <FiMoon size={30} />}
-          </button>
+          {/* Tombol Dark Mode (Desktop) */}
+          <li className="ml-4 border-l border-zinc-300 dark:border-zinc-700 pl-6">
+            <button onClick={toggleDarkMode} className="p-2 rounded-full text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+            </button>
+          </li>
         </ul>
-      )}
-    </nav>
+
+        {/* --- MOBILE HEADER MENU --- */}
+        {/* Pada mobile, header atas hanya menampilkan tombol Dark Mode */}
+        <div className="md:hidden flex items-center">
+          <button onClick={toggleDarkMode} className="p-2 rounded-full text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+            {darkMode ? <FiSun size={22} /> : <FiMoon size={22} />}
+          </button>
+        </div>
+      </motion.nav>
+
+      {/* ========================================================= */}
+      {/* BOTTOM NAVIGATION BAR (Khusus Mobile)                     */}
+      {/* ========================================================= */}
+      <div className="md:hidden fixed bottom-0 left-0 w-full h-[72px] bg-white/90 dark:bg-darkBg/90 backdrop-blur-lg border-t border-zinc-200 dark:border-zinc-800 z-50 flex justify-around items-center px-2 pb-1">
+        {links.map(({ id, name, link, icon }) => (
+          <Link
+            key={id}
+            to={link}
+            smooth
+            duration={500}
+            spy={true}
+            offset={-20}
+            /* activeClass dengan ! (important) agar mengesampingkan warna default */
+            activeClass="!text-zinc-900 dark:!text-white scale-110"
+            className="flex flex-col items-center justify-center w-full h-full text-zinc-400 dark:text-zinc-500 cursor-pointer transition-all duration-300"
+          >
+            <div className="mb-1 pointer-events-none">{icon}</div>
+            <span className="text-[10px] font-semibold pointer-events-none">{name}</span>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 };
 
