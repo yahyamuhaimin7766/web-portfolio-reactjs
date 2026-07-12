@@ -207,7 +207,7 @@ const Hero = ({ mode, setMode }) => {
                   {/* Foto Profil (Path diperbaiki jadi /) */}
                   <div className="relative group shrink-0">
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-500 to-zinc-900 dark:from-zinc-400 dark:to-white rounded-full opacity-30 group-hover:opacity-60 transition duration-500 blur"></div>
-                    <img src="/foto-profil.jpg" alt="Yahya Muhaimin" className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-24 md:h-24 rounded-full object-cover border-4 border-white dark:border-darkBg shadow-xl" />
+                    <img src="/profilku.jpg" alt="Yahya Muhaimin" className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-24 md:h-24 rounded-full object-cover border-4 border-white dark:border-darkBg shadow-xl" />
                   </div>
 
                   <div className="flex flex-col items-center md:items-start mt-3 md:mt-0">
@@ -283,7 +283,7 @@ const Hero = ({ mode, setMode }) => {
                 {/* --- ICON SOSMED KHUSUS STORE --- */}
                 <div className="flex items-center justify-center gap-5 sm:gap-6 mt-6">
                   <a
-                    href="https://wa.me/628XXXXXXXXXX"
+                    href="https://wa.me/625719503429"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-green-100 hover:text-green-600 dark:hover:bg-green-900/50 dark:hover:text-green-400 transition-colors duration-300"
@@ -291,7 +291,7 @@ const Hero = ({ mode, setMode }) => {
                     <FaWhatsapp size={20} />
                   </a>
                   <a
-                    href="https://tiktok.com/@tipsntrick.tech"
+                    href="https://www.tiktok.com/@tipsntrick.tech?is_from_webapp=1&sender_device=pc"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 hover:text-black dark:hover:bg-zinc-700 dark:hover:text-white transition-colors duration-300"
@@ -301,7 +301,7 @@ const Hero = ({ mode, setMode }) => {
 
                   {/* ICON EMAIL: Membuka Gmail Langsung */}
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=emailanda@gmail.com&su=Halo%20TipsnTech%20Store"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=tipsntech.trick@gmail.com&su=Halo%20TipsnTech%20Store"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/50 dark:hover:text-red-400 transition-colors duration-300"
@@ -310,7 +310,7 @@ const Hero = ({ mode, setMode }) => {
                   </a>
 
                   <a
-                    href="https://instagram.com/usernameanda"
+                    href="https://www.instagram.com/tipsntrick.tech?igsh=dnm4awk2y2zzzdm0"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-pink-100 hover:text-pink-600 dark:hover:bg-pink-900/50 dark:hover:text-pink-400 transition-colors duration-300"
@@ -318,7 +318,7 @@ const Hero = ({ mode, setMode }) => {
                     <FaInstagram size={20} />
                   </a>
                   <a
-                    href="https://youtube.com/@channelanda"
+                    href="https://youtube.com/@tipsntrick.techno?si=bfd6nh2vyxkdbcvq"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/50 dark:hover:text-red-500 transition-colors duration-300"
@@ -371,8 +371,8 @@ const Hero = ({ mode, setMode }) => {
                         {cat.items.map((item, idx) => (
                           <div key={idx} className="flex flex-col bg-white dark:bg-darkCard border border-zinc-200 dark:border-zinc-800 rounded-xl sm:rounded-2xl p-3 sm:p-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                             {/* PERBAIKAN: Menambahkan aspect-[16/10] dan position absolute agar layout gambar stabil di HP */}
-                            <div className="group relative bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-800 rounded-lg sm:rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 aspect-[16/10] w-full">
-                              <img src={item.img} alt={item.name} loading="lazy" className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
+                            <div className="group flex flex-col bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-800 rounded-lg sm:rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 w-full min-h-[120px] sm:min-h-[180px] flex items-center justify-center p-2">
+                              <img src={item.img} alt={item.name} loading="lazy" className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-500" />
                             </div>
 
                             <h4 className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-1 sm:mb-2 mt-3 sm:mt-5 leading-tight line-clamp-2">{item.name}</h4>
