@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// FiSun dan FiMoon sudah dihapus dari sini
 import { FiCode, FiShoppingBag, FiArrowRight, FiFileText, FiBook, FiLayout, FiTerminal } from "react-icons/fi";
 import { FaGithub, FaTiktok, FaWhatsapp, FaEnvelope, FaInstagram, FaYoutube } from "react-icons/fa";
 
 // ==========================================================
-// DATA PRODUK
+// DATA PRODUK (Path gambar telah diubah dari ./ menjadi /)
 // ==========================================================
 const digitalProducts = [
   {
@@ -18,7 +17,7 @@ const digitalProducts = [
         desc: "Template kwitansi otomatis berbasis Excel yang memudahkan pembuatan kwitansi secara cepat, rapi, dan profesional. Cukup input data, kwitansi langsung terisi dan siap dicetak atau disimpan sebagai PDF.",
         price: "Rp 14.700",
         oldPrice: "Rp 49.800",
-        img: "./digital-store/kwitansi.png",
+        img: "/digital-store/kwitansi.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/d1gro1nwo6v4",
       },
       {
@@ -26,7 +25,7 @@ const digitalProducts = [
         desc: "Nota Stok Barang Excel Otomatis untuk membantu pencatatan barang masuk dan keluar secara lebih cepat, rapi, dan akurat.",
         price: "Rp 14.900",
         oldPrice: "Rp 49.800",
-        img: "./digital-store/nota.png",
+        img: "/digital-store/nota.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/lve9wwvew5oo",
       },
       {
@@ -34,7 +33,7 @@ const digitalProducts = [
         desc: "Butuh cara cepat dan profesional untuk membuat slip gaji karyawan? Template ini adalah solusi praktis untuk kamu yang ingin proses payroll lebih efisien tanpa ribet.",
         price: "Rp 14.900",
         oldPrice: "Rp 49.800",
-        img: "./digital-store/slipgaji.png",
+        img: "/digital-store/slipgaji.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/pql08m1el03p",
       },
     ],
@@ -49,7 +48,7 @@ const digitalProducts = [
         desc: "E-book ini membahas langkah demi langkah cara membuat video animasi menarik dengan memanfaatkan AI gratis yang mudah digunakan.",
         price: "Rp 39.800",
         oldPrice: "Rp 150.000",
-        img: "./digital-store/ebook-animasi-comp.png",
+        img: "/digital-store/ebook-animasi-comp.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/z9qrmy151gz5",
       },
     ],
@@ -64,7 +63,7 @@ const digitalProducts = [
         desc: "SITATIB, sebuah aplikasi web lengkap yang dibangun dengan teknologi terbaru untuk membantu sekolah Anda mengelola data tata tertib secara profesional, cepat, dan akurat.",
         price: "Rp 49.800",
         oldPrice: "Rp 250.000",
-        img: "./projects-picture/logo-projects2.png",
+        img: "/projects-picture/logo-projects2.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/yzlk1o3lwdol",
       },
       {
@@ -72,7 +71,7 @@ const digitalProducts = [
         desc: "Membantu Anda mengatur data siswa, mengisi absensi harian, merekap data secara otomatis, hingga ekspor laporan dalam format PDF dan Excel.",
         price: "Rp 24.800",
         oldPrice: "Rp 59.900",
-        img: "./digital-store/absensi-digital1.png",
+        img: "/digital-store/absensi-digital1.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/o1wyjq0kkz98",
       },
       {
@@ -80,7 +79,7 @@ const digitalProducts = [
         desc: "Membantu Anda mengatur data siswa, mengisi absensi harian, merekap data secara otomatis, hingga ekspor laporan dalam format PDF dan Excel.",
         price: "Rp 24.800",
         oldPrice: "Rp 59.900",
-        img: "./digital-store/absensi-digital2.png",
+        img: "/digital-store/absensi-digital2.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/z8ygzn23pr02",
       },
       {
@@ -88,7 +87,7 @@ const digitalProducts = [
         desc: "Catat kegiatan mengajar Anda lebih cepat, rapi, & profesional langsung dari laptop — tanpa internet dan harga terjangkau khusus untuk kalangan Guru, Dosen dan Pengajar lainnya",
         price: "Rp 19.800",
         oldPrice: "Rp 55.000",
-        img: "./digital-store/jurnal-mengajar.png",
+        img: "/digital-store/jurnal-mengajar.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/j4w8x7xop249",
       },
       {
@@ -96,7 +95,7 @@ const digitalProducts = [
         desc: "Solusi manajemen nilai yang dirancang untuk meningkatkan produktivitas guru. Kelola seluruh data penilaian siswa melalui antarmuka yang bersih dan profesional, sepenuhnya fungsional tanpa koneksi internet.",
         price: "Rp 19.900",
         oldPrice: "Rp 74.900",
-        img: "./digital-store/nilai-digital-terbaru.png",
+        img: "/digital-store/nilai-digital-terbaru.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/858pkqxmo3n3",
       },
       {
@@ -104,7 +103,7 @@ const digitalProducts = [
         desc: "Kelola nilai siswa dengan mudah, cepat, dan tanpa internet. Aplikasi ini dirancang khusus untuk guru SD, SMP, hingga SMA agar lebih praktis dalam mencatat dan menghitung nilai siswa.",
         price: "Rp 14.900",
         oldPrice: "Rp 54.000",
-        img: "./digital-store/penilaian-siswa.png",
+        img: "/digital-store/penilaian-siswa.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/5536py9e2vov",
       },
       {
@@ -112,7 +111,7 @@ const digitalProducts = [
         desc: "Aplikasi absensi digital berbasis web yang praktis, modern, dan powerful, cocok digunakan untuk beberapa guru yang berbeda. Data absensi siswa akan tersimpan otomatis di Google Sheets. ",
         price: "Rp 39.900",
         oldPrice: "Rp 150.000",
-        img: "./digital-store/absensi-database.png",
+        img: "/digital-store/absensi-database.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/lovd18lzvkwx",
       },
       {
@@ -120,7 +119,7 @@ const digitalProducts = [
         desc: "Ubah cara absen sholat dhuha dan dhuhur manual yang ribet jadi digital. Laporan rekap bulanan otomatis jadi Excel Cocok untuk sekolah dan madrasah. Sekali beli, pakai selamanya.",
         price: "Rp 24.800",
         oldPrice: "Rp 50.900",
-        img: "./digital-store/epresensi-dhuha.png",
+        img: "/digital-store/epresensi-dhuha.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/36rgrg62o966",
       },
       {
@@ -128,7 +127,7 @@ const digitalProducts = [
         desc: "Modernisasi Sistem Administrasi Presensi di Lingkungan Pesantren Anda.Tinggalkan metode presensi manual berbasis kertas yang tidak efisie dan memakan waktu dalam proses rekapitulasi bulanan.",
         price: "Rp 24.900",
         oldPrice: "Rp 59.800",
-        img: "./digital-store/epresensi-sholat5waktu.png",
+        img: "/digital-store/epresensi-sholat5waktu.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/zy4zejz5pd07",
       },
       {
@@ -136,7 +135,7 @@ const digitalProducts = [
         desc: "Dengan paket ini, kamu dapat 3 aplikasi digital siap pakai + Bonus prompt web mengajar.",
         price: "Rp 49.700",
         oldPrice: "Rp 165.000",
-        img: "./digital-store/bundle-aplikasi.png",
+        img: "/digital-store/bundle-aplikasi.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/1envv9wgz2ye",
       },
     ],
@@ -150,7 +149,7 @@ const digitalProducts = [
         name: "Kumpulan Prompt Aplikasi Web Mengajar",
         desc: "Di sini ada kumpulan prompt website yang bisa langsung kamu pakai untuk berbagai kebutuhan mengajar dan desain bikin web statis!.",
         price: "Rp 10.900",
-        img: "./digital-store/prompt-mengajar.png",
+        img: "/digital-store/prompt-mengajar.png", // PERBAIKAN: Hapus titik
         link: "https://lynk.id/tipsntech/dy49er6g9l2m",
       },
     ],
@@ -158,7 +157,6 @@ const digitalProducts = [
 ];
 
 const Hero = ({ mode, setMode }) => {
-  // State isDark dan toggleDarkMode dihapus dari Hero karena sudah diurus oleh Navbar
   const [activeCategory, setActiveCategory] = useState("all");
 
   const filteredProducts = activeCategory === "all" ? digitalProducts : digitalProducts.filter((product) => product.id === activeCategory);
@@ -204,17 +202,14 @@ const Hero = ({ mode, setMode }) => {
               transition={{ duration: 0.3 }}
               className="w-full max-w-screen-lg flex flex-col md:flex-row items-center gap-12"
             >
-              {/* Kolom Kiri */}
               <div className="flex-1 w-full flex flex-col items-center md:items-start text-center md:text-left">
-                {/* Foto dan Teks Sejajar */}
                 <div className="flex flex-col md:flex-row items-center md:items-center gap-5 md:gap-6 mb-6">
-                  {/* Foto Profil */}
+                  {/* Foto Profil (Path diperbaiki jadi /) */}
                   <div className="relative group shrink-0">
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-500 to-zinc-900 dark:from-zinc-400 dark:to-white rounded-full opacity-30 group-hover:opacity-60 transition duration-500 blur"></div>
-                    <img src="./profilku.jpg" alt="Yahya Muhaimin" className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-24 md:h-24 rounded-full object-cover border-4 border-white dark:border-darkBg shadow-xl" />
+                    <img src="/foto-profil.jpg" alt="Yahya Muhaimin" className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-24 md:h-24 rounded-full object-cover border-4 border-white dark:border-darkBg shadow-xl" />
                   </div>
 
-                  {/* Teks Sapaan */}
                   <div className="flex flex-col items-center md:items-start mt-3 md:mt-0">
                     <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-zinc-500 mb-2">Systems Architecture & Web Development</p>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-tight">
@@ -279,7 +274,7 @@ const Hero = ({ mode, setMode }) => {
               <div className="text-center mb-10">
                 <div className="w-20 h-20 bg-white dark:bg-darkCard rounded-2xl flex items-center justify-center shadow-lg border border-zinc-200 dark:border-zinc-700 mx-auto mb-6 group hover:scale-110 transition-transform duration-300 overflow-hidden">
                   <a href="https://www.tiktok.com/@tipsntrick.tech" target="_blank" rel="noopener noreferrer" className="w-full h-full p-1.5 flex items-center justify-center">
-                    <img src="./logo/logo-tiktok.png" alt="Logo Tips N Tech" className="w-full h-full rounded-xl object-cover" />
+                    <img src="/logo/logo-tiktok.png" alt="Logo Tips N Tech" className="w-full h-full rounded-xl object-cover" />
                   </a>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-white mb-4">Tips N Tech Digital Store</h2>
@@ -288,7 +283,7 @@ const Hero = ({ mode, setMode }) => {
                 {/* --- ICON SOSMED KHUSUS STORE --- */}
                 <div className="flex items-center justify-center gap-5 sm:gap-6 mt-6">
                   <a
-                    href="https://wa.me/625719503429"
+                    href="https://wa.me/628XXXXXXXXXX"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-green-100 hover:text-green-600 dark:hover:bg-green-900/50 dark:hover:text-green-400 transition-colors duration-300"
@@ -296,23 +291,26 @@ const Hero = ({ mode, setMode }) => {
                     <FaWhatsapp size={20} />
                   </a>
                   <a
-                    href="https://www.tiktok.com/@tipsntrick.tech?is_from_webapp=1&sender_device=pc"
+                    href="https://tiktok.com/@tipsntrick.tech"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 hover:text-black dark:hover:bg-zinc-700 dark:hover:text-white transition-colors duration-300"
                   >
                     <FaTiktok size={20} />
                   </a>
+
+                  {/* ICON EMAIL: Membuka Gmail Langsung */}
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=tipsntech.trick@gmail.com&su=Halo%20TipsnTech%20Store"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=emailanda@gmail.com&su=Halo%20TipsnTech%20Store"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/50 dark:hover:text-red-400 transition-colors duration-300"
                   >
                     <FaEnvelope size={20} />
                   </a>
+
                   <a
-                    href="https://www.instagram.com/tipsntrick.tech?igsh=dnm4awk2y2zzzdm0"
+                    href="https://instagram.com/usernameanda"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-pink-100 hover:text-pink-600 dark:hover:bg-pink-900/50 dark:hover:text-pink-400 transition-colors duration-300"
@@ -320,7 +318,7 @@ const Hero = ({ mode, setMode }) => {
                     <FaInstagram size={20} />
                   </a>
                   <a
-                    href="https://youtube.com/@tipsntrick.techno?si=bfd6nh2vyxkdbcvq"
+                    href="https://youtube.com/@channelanda"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/50 dark:hover:text-red-500 transition-colors duration-300"
@@ -372,8 +370,9 @@ const Hero = ({ mode, setMode }) => {
                       <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                         {cat.items.map((item, idx) => (
                           <div key={idx} className="flex flex-col bg-white dark:bg-darkCard border border-zinc-200 dark:border-zinc-800 rounded-xl sm:rounded-2xl p-3 sm:p-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                            <div className="group flex flex-col bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-800 rounded-lg sm:rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2">
-                              <img src={item.img} alt={item.name} className="w-full h-24 sm:h-auto object-cover transform hover:scale-105 transition-transform duration-500" />
+                            {/* PERBAIKAN: Menambahkan aspect-[16/10] dan position absolute agar layout gambar stabil di HP */}
+                            <div className="group relative bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-800 rounded-lg sm:rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 aspect-[16/10] w-full">
+                              <img src={item.img} alt={item.name} loading="lazy" className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
                             </div>
 
                             <h4 className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-1 sm:mb-2 mt-3 sm:mt-5 leading-tight line-clamp-2">{item.name}</h4>
